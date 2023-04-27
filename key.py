@@ -1,0 +1,1 @@
+GptKey = "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"
