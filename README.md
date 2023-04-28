@@ -30,11 +30,7 @@ pip install prettytable
 1. Get OpenAI API key and give it in key.py file in our repository. Make sure you have sufficient funds for API to process your requests.
 2. Based on your requirements change the model and max_tokens in main.py file.
 
-   ```
-   ![Alt text](image\README\1682710199467.png)
-   ```
-
-   If you want basic content and you want to save your funds for futher requests use gpt-3.5-turbo. If you want advanced replies choose gpt-4.0 or text-davinci-003. (Refer OpenAI documentation about models and max_tokens.)
+   * If you want basic content and you want to save your funds for futher requests use gpt-3.5-turbo. If you want advanced replies choose gpt-4.0 or text-davinci-003. (Refer OpenAI documentation about models and max_tokens.)
 3. Run main.py and follow instructions in code for deployment and any editing in the model replies.
 4. Code will ask your permission whether to deploy or stop the program so don't panic. (Every further step we take your permission.)
 5. If everything runs properly and your code got deployed then press CTRL C at last to stop the process. (we are checking all possibilities to stop it without human input.)
