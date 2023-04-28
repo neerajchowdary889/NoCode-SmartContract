@@ -1,1 +1,1 @@
-SolSmartContract1
+SolSmartContract
