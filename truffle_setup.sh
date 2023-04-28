@@ -8,4 +8,4 @@ npm install --save truffle-hdwallet-provider
 cd ..
 sol_file=$(python3 SolFileName.py)
 echo $sol_file
-sudo mv $sol_file $file/contractsextras/testing.py
+sudo mv $sol_file $file/contracts

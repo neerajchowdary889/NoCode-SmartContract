@@ -1,13 +1,10 @@
 import openai
-import re
 import os
-import subprocess
 from termcolor import colored
 from prettytable import PrettyTable
-from key import GptKey
-from return_Contract_Name import returnName
-from creating_migrationFile import create_migrationFile
-openai.api_key = GptKey
+
+openai.api_key = "---Your OpenAI API_KEY here---" #GptKey
+
 
 
 def search(prompt):
@@ -18,7 +15,7 @@ def search(prompt):
         messages=[{"role":"user",
                 "content":prompt}
                 ],
-        max_tokens=2048,                                                                                                                                                           
+        max_tokens=500,                                                                                                                                                           
     )
 
     Message = response.choices[0].message.content
@@ -40,7 +37,7 @@ def advanced_search(prompt):
                     {"role":"user",
                         "content":prompt}
                         ],
-            max_tokens=2048,
+            max_tokens=500,
         )
 
     Message = response.choices[0].message.content
@@ -77,10 +74,6 @@ def History():
 
 
 def create_SOLFile():
-    pattern = r"(?s)pragma solidity.*\}"
-    matches = re.findall(pattern, history[list(history)[-1]])
-    solidity_code = ''.join(matches)
-
     filename = 'SOLFile.sol'
     i = 1
 
@@ -89,17 +82,12 @@ def create_SOLFile():
         i += 1
 
     with open(filename, 'w') as f:
-        f.write(solidity_code)
+        f.write(history[list(history)[-1]])
         f.close()
         
     print(colored("SOL File Created", 'green', attrs=['bold']))
+    return
 
-    with open('FileHistory.txt','a') as f:
-        f.write(filename)
-        f.write("\n")
-        f.close()
-
-    return solidity_code
 
 
 
@@ -114,7 +102,7 @@ search(prompt)
 print(colored("\n<-----Searching Done----->\n", 'red', attrs=['bold']))
 
 
-history_check = input(colored("Do you want to see history? (y/n) >>> ", 'yellow', attrs=['bold']))
+history_check = input("Do you want to see history? (y/n) >>> ")
 if history_check == "y":
     History()
 else:
@@ -123,28 +111,8 @@ else:
 
 deploy = input(colored("Do you want to deploy this code in a SOL file? (y/n) >>> ", 'yellow', attrs=['bold']))
 if deploy == "y":
-    Refactored_code = create_SOLFile()
+    create_SOLFile()
 else:
     print(colored("Solidity File not created...", 'red', attrs=['bold']))
 
-
-TestNet_Deploy = input(colored("Do you want to deploy this code in a TestNet using Truffle? (y/n) >>> ", 'yellow', attrs=['bold']))
-if TestNet_Deploy == "y":
-    subprocess.run(["./truffle_setup.sh"], shell=True)
-    print(colored("File Moved to contracts", 'green', attrs=['bold']))
-    print(colored("yet to deploy in testnet", 'green', attrs=['bold']))
-else:
-    print(colored("Solidity File not deployed in TestNet...", 'red', attrs=['bold']))
-
 print(colored("Thankyou for using our service", 'red', attrs=['bold']))
-
-
-
-
-
-############################################################
-print(colored("Trying to do Post Contract creation.....", 'yellow', attrs=['bold']))
-word = returnName(Refactored_code)      # Getting the CONTRACT NAME
-print(colored(word, 'red', attrs=['bold']))
-create_migrationFile(word)
-subprocess.run(["./migration_setup.sh"], shell=True)

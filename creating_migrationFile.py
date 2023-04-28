@@ -18,9 +18,8 @@ def create_migrationFile(word):
     ff = open(fileName2, "w")
     ff.write(data2)
     ff.close()
-    print(data2)
 
-    txtfile = open("FileHistory.txt", "w")
+    txtfile = open("MigrationFileHistory.txt", "w")
     txtfile.write(fileName1)
     txtfile.write("\n")
     txtfile.write(fileName2)
