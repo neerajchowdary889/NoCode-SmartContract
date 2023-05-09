@@ -124,27 +124,29 @@ else:
 deploy = input(colored("Do you want to deploy this code in a SOL file? (y/n) >>> ", 'yellow', attrs=['bold']))
 if deploy == "y":
     Refactored_code = create_SOLFile()
+    TestNet_Deploy = input(colored("Do you want to deploy this code in a TestNet using Truffle? (y/n) >>> ", 'yellow', attrs=['bold']))
+    if TestNet_Deploy == "y":
+        subprocess.run(["./truffle_setup.sh"], shell=True)
+        print(colored("File Moved to contracts", 'green', attrs=['bold']))
+        # print(colored("yet to deploy in testnet", 'green', attrs=['bold']))
+
+
+        print(colored("Trying to do Post Contract creation.....", 'yellow', attrs=['bold']))
+        try:
+            word = returnName(Refactored_code)      # Getting the CONTRACT NAME
+            # print(colored(word, 'red', attrs=['bold']))
+        except:
+            print(colored("Contract Name not found", 'red', attrs=['bold']))
+        
+        create_migrationFile(word)
+        subprocess.run(["./migration_setup.sh"], shell=True)
+    else:
+        print(colored("Solidity File not deployed in TestNet...", 'red', attrs=['bold']))
+
+    print(colored("Thankyou for using our service", 'red', attrs=['bold']))
 else:
     print(colored("Solidity File not created...", 'red', attrs=['bold']))
 
 
-TestNet_Deploy = input(colored("Do you want to deploy this code in a TestNet using Truffle? (y/n) >>> ", 'yellow', attrs=['bold']))
-if TestNet_Deploy == "y":
-    subprocess.run(["./truffle_setup.sh"], shell=True)
-    print(colored("File Moved to contracts", 'green', attrs=['bold']))
-    print(colored("yet to deploy in testnet", 'green', attrs=['bold']))
-else:
-    print(colored("Solidity File not deployed in TestNet...", 'red', attrs=['bold']))
-
-print(colored("Thankyou for using our service", 'red', attrs=['bold']))
 
 
-
-
-
-############################################################
-print(colored("Trying to do Post Contract creation.....", 'yellow', attrs=['bold']))
-word = returnName(Refactored_code)      # Getting the CONTRACT NAME
-print(colored(word, 'red', attrs=['bold']))
-create_migrationFile(word)
-subprocess.run(["./migration_setup.sh"], shell=True)
