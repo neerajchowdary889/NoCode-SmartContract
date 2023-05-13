@@ -43,3 +43,4 @@ pip install prettytable
 - Right now we are not returning the contract id, you should see the output from terminal and check for the contract id.
 - At Present deploying in Localnet is supported. In future we bring support to deploy your smart contract in ethereum testnet and mainnet.
 - Don't forgot to stop the execution of program after deployment of smart contract. ( Press CTRL C )
+- Please note this is not fully perfect yet, we will try to make it better.
