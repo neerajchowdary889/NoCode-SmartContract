@@ -119,7 +119,7 @@ history_check = input(colored("Do you want to see history? (y/n) >>> ", 'yellow'
 if history_check == "y":
     History()
 else:
-    print(colored("Thankyou...", 'red', attrs=['bold']))
+    print(colored("History still stored in dictonary...", 'red', attrs=['bold']))
 
 
 deploy = input(colored("Do you want to deploy this code in a SOL file? (y/n) >>> ", 'yellow', attrs=['bold']))
@@ -143,11 +143,9 @@ if deploy == "y":
         subprocess.run(["./migration_setup.sh"], shell=True)
     else:
         print(colored("Solidity File not deployed in TestNet...", 'red', attrs=['bold']))
-
-    print(colored("Thankyou for using our service", 'red', attrs=['bold']))
 else:
     print(colored("Solidity File not created...", 'red', attrs=['bold']))
 
-
+print(colored("Thankyou for using our service", 'red', attrs=['bold']))
 
 
