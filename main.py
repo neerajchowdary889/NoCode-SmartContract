@@ -9,12 +9,13 @@ from return_Contract_Name import returnName
 from creating_migrationFile import create_migrationFile
 openai.api_key = GptKey
 
+Model = 'gpt-3.5-turbo'
 
 def search(prompt):
     print((colored("Searching for: "+prompt, 'green', attrs=['bold'])))
 
     response=openai.ChatCompletion.create(
-        model='gpt-3.5-turbo',
+        model=Model,
         messages=[{"role":"user",
                 "content":prompt}
                 ],
@@ -35,7 +36,7 @@ def advanced_search(prompt):
     print((colored("Searching for: "+prompt, 'green', attrs=['bold'])))
 
     response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo',
+            model=Model,
             messages=[{"role":"assistant", "content":history[list(history)[-1]]},
                     {"role":"user",
                         "content":prompt}
