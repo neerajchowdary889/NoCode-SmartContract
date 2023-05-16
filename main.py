@@ -119,7 +119,7 @@ history_check = input(colored("Do you want to see history? (y/n) >>> ", 'yellow'
 if history_check == "y":
     History()
 else:
-    print(colored("History still stored in dictonary...", 'red', attrs=['bold']))
+    print(colored("History still be stored in dictonary...", 'red', attrs=['bold']))
 
 
 deploy = input(colored("Do you want to deploy this code in a SOL file? (y/n) >>> ", 'yellow', attrs=['bold']))
