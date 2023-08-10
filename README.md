@@ -1,4 +1,3 @@
-
 # No-Code SmartContract
 
 This is designed to generate a Smart Contract using OpenAI's ChatGPT and deploy it on the Ethereum chain. The creation of the Smart Contract and its deployment to the blockchain will be done automatically. The user doesnt have to learn Solidity or deal with deployment issues.
@@ -24,6 +23,12 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install require
 pip install -r requirements.txt
 ```
 
+Grant execution permissions to bash files.
+
+```bash
+chmod +x migration_setup.sh
+chmod +x truffle_setup.sh
+```
 ## Getting Started
 
 1. Get OpenAI API key and give it in key.py file in our repository. Make sure you have sufficient funds for API to process your requests.
