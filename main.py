@@ -13,6 +13,9 @@ Model = 'gpt-3.5-turbo'
 
 def search(prompt):
     print((colored("Searching for: "+prompt, 'green', attrs=['bold'])))
+    
+    postPromt = "{type: smart contract; programming language: solidity;}"
+    prompt = prompt+postPromt
 
     response=openai.ChatCompletion.create(
         model=Model,
@@ -34,6 +37,9 @@ def search(prompt):
 
 def advanced_search(prompt):
     print((colored("Searching for: "+prompt, 'green', attrs=['bold'])))
+    
+    postPromt = "{type: smart contract; programming language: solidity;}"
+    prompt = prompt+postPromt
 
     response = openai.ChatCompletion.create(
             model=Model,

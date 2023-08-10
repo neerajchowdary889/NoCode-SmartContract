@@ -21,9 +21,7 @@ truffle version
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install required Packages.
 
 ```bash
-pip install openai
-pip install termcolor
-pip install prettytable
+pip install -r requirements.txt
 ```
 
 ## Getting Started
